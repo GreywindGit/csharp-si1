@@ -2,7 +2,7 @@
 
 namespace CreateClass
 {
-    public class Employee : Person
+    public class Employee : Person, ICloneable
     {
         public double Salary { get; set; }
         public string Profession { get; set; }
@@ -14,9 +14,22 @@ namespace CreateClass
             this.Profession = profession;
         }
 
+        /*public object Clone()
+        {
+            return this.MemberwiseClone();
+        }*/
+
+        public object Clone()
+        {
+            Employee newEmployee = (Employee)this.MemberwiseClone();
+            newEmployee.Room = new Room(Room.Number);
+            return newEmployee;
+        }
+
         public override string ToString()
         {
-            return $"Name: {Name}, Date of Birth: {BirthDate.ToShortDateString()}, Gender: {gender}, Salary: {Salary}, Profession: {Profession}";
+            return $"Name: {Name}, Date of Birth: {BirthDate.ToShortDateString()}, Gender: {gender}, Salary: {Salary}, " +
+                $"Profession: {Profession}, Room No: {Room.Number}";
         }
     }
 }
