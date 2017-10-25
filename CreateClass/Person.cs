@@ -2,12 +2,12 @@
 
 namespace CreateClass
 {
-    class Person
+    public class Person
     {
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public enum Genders {Male, Female};
-        private Genders gender;
+        protected Genders gender;
 
         public Person(string name, DateTime birthDate, Genders gender)
         {
@@ -20,7 +20,7 @@ namespace CreateClass
 
         public override string ToString()
         {
-            return "Name: " + Name + ", Date of Birth: " + BirthDate.ToShortDateString() + ", Gender: " + gender.ToString();
+            return $"Name: {Name}, Date of Birth: {BirthDate.ToShortDateString()}, Gender: { gender.ToString()}";
         }
     }
 }
